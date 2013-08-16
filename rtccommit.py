@@ -12,7 +12,7 @@ def rtc_commit(username, password, dir, comment='Committing changes', repoURL='h
     elif not dir:
         print "Please enter the directory to commit."
         return 0
-    elif not os.path.isdir(dir)
+    elif not os.path.isdir(dir):
         print "The directory '" + dir + "' does not exist. Please enter a valid directory."
         return 0
     
