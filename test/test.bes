@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>TEMA SUA Security Patch</Title>
+		<Description><![CDATA[Updates the TEMA platform to address&nbsp;security vulnerability CVE-2013-0156.]]></Description>
+		<Relevance><![CDATA[exists folder (parent folder of folder (parenthesized part of match (regex "^%22([^%22]+)\\TEMAnalytics.exe%22") of (value whose (name of it = "ImagePath") of keys "HKLM\SYSTEM\CurrentControlSet\services\TEMA" of registry as string)) as string & "\work\tema\webapp\WEB-INF\domains\sam")]]></Relevance>
+		<Relevance><![CDATA[(it >= "2.0.0" and it < "2.0.64") of parenthesized part of match (regex "['%22]([\d\.]+)['%22]") of concatenation of lines containing "full_string" of file (parent folder of folder (parenthesized part of match (regex "^%22([^%22]+)\\TEMAnalytics.exe%22") of (value whose (name of it = "ImagePath") of keys "HKLM\SYSTEM\CurrentControlSet\services\TEMA" of registry as string)) as string & "\work\tema\webapp\WEB-INF\config\version.rb")]]></Relevance>
+		<Category></Category>
+		<Source>Internal</Source>
+		<SourceID></SourceID>
+		<SourceReleaseDate>2013-01-14</SourceReleaseDate>
+		<SourceSeverity></SourceSeverity>
+		<CVENames></CVENames>
+		<SANSID></SANSID>
+		<MIMEField>
+			<Name>x-fixlet-modification-time</Name>
+			<Value>Tue, 15 Jan 2013 22:35:13 +0000</Value>
+		</MIMEField>
+		<Domain>BESC</Domain>
+		<DefaultAction ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to update SUA.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">prefetch installer.msi sha1:1e27df380336d54b195f915ad12b419267fe9cae size:162610176 http://software.bigfix.com/download/tema/sua_2.0_64.msi
+waithidden msiexec /quiet /i __Download\installer.msi</ActionScript>
+		</DefaultAction>
+	</Fixlet>
+</BES>
