@@ -1,8 +1,12 @@
 import os
 import sys
 import re
-from bes import *
+#from bes import *
 import contentgenerator as cg
+
+if len(sys.argv) < 2:
+    print "Need to specify site"
+    sys.exit()
 
 class Site:
     def __init__(self, rootdir):
@@ -18,6 +22,8 @@ class Site:
                     fixletsIds.append(int(result.group(1)))
         return max(fixletsIds)
         
+site = Site(sys.argv[1])
+#site = Site("C:/RTC/Site MDM Dev")
         
 
 id = "Action1"
@@ -31,6 +37,5 @@ relevance = ['(if exists property "in proxy agent context" then ( not in proxy a
 actions = [cg.createAction(id, postlink, action)]
 parameters = {'Category': 'Support', 'Source': 'BigFix'}
 
-site = Site("C:/RTC/Site MDM Dev")
 id = site.getNextFixletId()
 cg.createFixlet(id, title, description, relevance, actions, parameters, [])
