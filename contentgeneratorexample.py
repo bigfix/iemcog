@@ -11,4 +11,4 @@ actions = [cg.createAction(id, postlink, action)]
 parameters = {'Category': 'Support', 'Source': 'BigFix'}
 
 
-cg.createFixlet("Fixlet Name", title, description, relevance, actions, parameters, [])
+cg.createFixlet("10", title, description, relevance, actions, parameters, [])

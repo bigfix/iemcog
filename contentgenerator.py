@@ -18,7 +18,7 @@ fixletaction = """
 </Action>
 """
 
-def createFixlet(filename, title, description, relevance, actions, parameters, MIMEfields):
+def createFixlet(id, title, description, relevance, actions, parameters, MIMEfields):
     t = ET.ElementTree(ET.fromstring(fixlet))
     f = t.getroot()[0]
     
@@ -50,7 +50,7 @@ def createFixlet(filename, title, description, relevance, actions, parameters, M
     for action in actions:
         f.append(action)
     
-    t.write(filename + ".bes")
+    t.write(id + "-" + title + ".bes")
     
 def createAction(ID, postLink, action):
     a = ET.fromstring(fixletaction)
