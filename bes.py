@@ -26,6 +26,8 @@ class File(object):
             return Fixlet(element)
         elif len(element) == 0 and element.text:
             return TextElement.fromxml(element)
+        elif element.tag == 'Action' || element.tag == 'DefaultAction':
+            return Action(element)
         else:
             return Element(element)
 
@@ -97,6 +99,13 @@ class Fixlet(Element):
             'SANSID',
             'Domain'
             ])
+
+class Action(Element):
+    def __init__(self, element):
+        self.plurals = set(['ActionScript'])
+        self.loadxmldata(element)
+        self.text_accessors = set([])
+
 
 class TextElement(Element):
     def __init__(self, tag, text, attributes):
