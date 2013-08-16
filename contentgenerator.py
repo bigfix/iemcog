@@ -50,7 +50,7 @@ def createFixlet(id, title, description, relevance, actions, parameters, MIMEfie
     for action in actions:
         f.append(action)
     
-    t.write(id + "-" + title + ".bes")
+    t.write(str(id) + " - " + title + ".bes")
     
 def createAction(ID, postLink, action):
     a = ET.fromstring(fixletaction)
