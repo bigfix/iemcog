@@ -1,0 +1,30 @@
+To run the command line version of RTC, locate "scm.exe" in:   C:\Program Files (x86)\IBM\TeamConcert\scmtools\eclipse
+
+---------------------------------
+Here are the commands:
+
+scm.exe login -r https://rtp-rtc17.tivlab.raleigh.ibm.com:9443/jazz -u <username> -P <password>
+scm.exe checkin -u <username> -P <password> <top level dir>
+scm.exe changeset comment -u <username> -P <password> <changeset number> <comment>
+scm.exe deliver -u <username> -P <password> -d <top level dir>
+scm.exe logout -r https://rtp-rtc17.tivlab.raleigh.ibm.com:9443/jazz
+
+---------------------------------
+
+NOTES:
+
+-P option is uppercase P, not lowercase p.
+
+Username and password must be supplied each time, or else you will be prompted to supply it (which breaks automation)
+
+To get the <changeset number> for the 3rd step, you need to parse the output from the 2nd step. 3rd step doesn't seem avoidable if you wish to commit (4th step).
+
+For the 4th step, the <top level dir> is pretty much the top level directory of the project you are trying to commit to.
+
+
+---------------------------------
+
+Resources:
+
+https://jazz.net/library/article/620/
+http://pic.dhe.ibm.com/infocenter/rtc/v2r0m0/index.jsp?topic=/com.ibm.team.scm.doc/topics/m_cli_usecases.html
