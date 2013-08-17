@@ -88,10 +88,14 @@ def rtc_commit(username, password, dir, comment='Committing changes', repoURL='h
         
         # Deliver/commit the changes
         if changesetID:
-            print "Delivering/committing any changes via changeset ID " + changesetID + "."
-            deliver = subprocess.Popen([scmfile, 'deliver', '-u', username, '-P', password, '-d', dir, '-c', changesetID], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            if workspace:
+                print "Delivering/committing any changes via changeset ID '" + changesetID + "' and workspace '" + workspace "'."
+                deliver = subprocess.Popen([scmfile, 'deliver', '-u', username, '-P', password, '-d', dir, '-c', changesetID, '-s', workspace], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            else:
+                print "Delivering/committing any changes via changeset ID '" + changesetID + "'."
+                deliver = subprocess.Popen([scmfile, 'deliver', '-u', username, '-P', password, '-d', dir, '-c', changesetID], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         elif workspace:
-            print "Delivering/committing any changes via workspace name " + workspace + "."
+            print "Delivering/committing any changes via workspace '" + workspace + "'."
             deliver = subprocess.Popen([scmfile, 'deliver', '-u', username, '-P', password, '-d', dir, '-s', workspace], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         else:
             print "Delivering/committing any changes."
